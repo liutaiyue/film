@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.tarena.film.mapper.FilmTypeMapper">
+	<select id="findAll" resultMap="filmType">
+		SELECT *FROM
+		(SELECT type_name,type_id id FROM type_list) t
+			LEFT JOIN
+		(SELECT * FROM film_list) f
+			ON 
+		t.id=f.type_id
+		ORDER BY f.film_id
+		LIMIT 0,100
+	</select>
+	
+	<resultMap type="filmType" id="filmType" autoMapping="true">
+			<id column="type_id" property="typeId"/>
+			<collection property="films" ofType="film">
+				<id column="film_id" property="filmId"/>
+				<result column="film_name" property="filmName"/>
+				<result column="state" property="state"/>
+				<result column="describes" property="describes"/>
+				<result column="releaseDate" property="releaseDate"/>
+				<result column="film_image" property="filmImage"/>
+				<result column="duration" property="duration"/>
+				<result column="movie_url" property="movieUrl"/>
+			</collection>
+	</resultMap>
+</mapper>

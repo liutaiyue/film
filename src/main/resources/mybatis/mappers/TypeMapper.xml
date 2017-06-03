@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.tarena.film.mapper.TypeMapper">
+	<select id="findAll" resultType="Type">
+		SELECT * FROM TYPE_LIST
+	</select>
+	<insert id="saveType">
+		INSERT INTO TYPE_LIST VALUES(null,#{typeName})
+	</insert>
+	<delete id="deleteType">
+		DELETE FROM TYPE_LIST WHERE TYPE_ID in(
+				<foreach collection="array" item="id" separator=",">
+					#{id}
+				</foreach>
+			)
+	</delete>
+	
+</mapper>

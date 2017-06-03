@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.tarena.film.mapper.SeatMapper">
+	<select id="findFilmByPid" resultType="Seat">
+	select * from seat_list where play_id=#{play.playId}
+	</select>
+	<delete id="deleteSeatByPid">
+	delete from seat_list where play_id=#{play.playId}
+	</delete>
+	<insert id="saveSeat">
+		insert into seat_list values(#{seatId},#{play.playId},#{col},#{row})
+	</insert>
+	
+	<select id="findSeatByPid" resultType="Seat">
+		select * from seat_list where play_id=#{play.playId}
+	</select>
+	
+	<delete id="deleteSeat">
+		delete from seat_list where seat_id =#{seatId}
+	</delete>
+</mapper>

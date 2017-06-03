@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.tarena.film.mapper.OrderMapper">
+	<select id="findAll" resultMap="resultRM">
+		
+			select * from
+(select * from
+(select * from order_list o LEFT JOIN
+
+(select user_id u_id,username from user_list) u 
+
+ON o.user_id=u.u_id) ou LEFT JOIN
+
+(select seat_id s_id,col,row,hall_id,start_time,film_id,film_name,price,film_image from seat_list s LEFT JOIN
+		(select film_id ,play_id p_id ,hall_id,start_time,film_name,price,film_image from play_list p 
+		LEFT JOIN
+		(select film_name,price,film_id f_id,film_image from film_list) f
+		on p.film_id=f.f_id) pf
+		on s.play_id=pf.p_id) spf
+ON ou.seat_id=spf.s_id)o
+LEFT JOIN
+(SELECT hall_id h_id,hall_name from hall_list) h
+ON o.hall_id=h.h_id
+	</select>
+	
+	<resultMap type="Order" id="resultRM" autoMapping="true">
+		<id column="order_id" property="orderId"/>
+		<association property="user" javaType="User">
+			<id column="user_id" property="userId"/>
+			<result column="username" property="username"/>
+		</association>
+		<association property="seat" javaType="Seat">
+			<id column="seat_id" property="seatId"/>
+			<result column="row" property="row"/>
+			<result column="col" property="col"/>
+			<association property="play" javaType="Play">
+				<id column="play_id" property="playId"/>
+				<result column="start_time" property="startTime"/>
+				<association property="hall" javaType="Hall">
+					<id column="hall_id" property="hallId"/>
+					<result column="hall_name" property="hallName"/>
+					<result column="hall_row" property="hallRow"/>
+					<result column="hall_col" property="hallCol"/>
+				</association>
+				<association property="film" javaType="Film">
+					<id column="film_id" property="filmId"/>
+					<result column="film_name" property="filmName"/>
+					<result column="film_image" property="filmImage"/>
+					<result column="price" property="price"/>
+				</association>
+			</association>
+		</association>
+	
+	</resultMap>
+	
+	<delete id="deleteOrder">
+		delete from order_list where order_id IN (
+			<foreach collection="array"  item="id" separator=",">
+				#{id}
+			</foreach>
+		
+		)
+		
+		
+	</delete>
+	
+	<insert id="saveOrder">
+		insert into order_list values (#{orderId},#{seat.seatId},#{user.userId})
+	</insert>
+	
+	<select id="findOrderByUid" resultMap="resultRM">
+	select * from
+(select * from
+(select * from order_list o LEFT JOIN
+
+(select user_id u_id,username from user_list) u 
+
+ON o.user_id=u.u_id) ou LEFT JOIN
+
+(select seat_id s_id,col,row,hall_id,start_time,film_id,film_name,price,film_image from seat_list s LEFT JOIN
+		(select film_id ,play_id p_id ,hall_id,start_time,film_name,price,film_image from play_list p 
+		LEFT JOIN
+		(select film_name,price,film_id f_id,film_image from film_list) f
+		on p.film_id=f.f_id) pf
+		on s.play_id=pf.p_id) spf
+ON ou.seat_id=spf.s_id)o
+LEFT JOIN
+(SELECT hall_id h_id,hall_name from hall_list) h
+ON o.hall_id=h.h_id where o.user_id=#{userId}
+	</select>
+	
+	<select id="findOrderByOId" resultMap="resultRM">
+		select * from
+(select * from
+(select * from order_list o LEFT JOIN
+
+(select user_id u_id,username from user_list) u 
+
+ON o.user_id=u.u_id) ou LEFT JOIN
+
+(select seat_id s_id,col,row,hall_id,start_time,film_id,film_name,price,film_image from seat_list s LEFT JOIN
+		(select film_id ,play_id p_id ,hall_id,start_time,film_name,price,film_image from play_list p 
+		LEFT JOIN
+		(select film_name,price,film_id f_id,film_image from film_list) f
+		on p.film_id=f.f_id) pf
+		on s.play_id=pf.p_id) spf
+ON ou.seat_id=spf.s_id)o
+LEFT JOIN
+(SELECT hall_id h_id,hall_name from hall_list) h
+ON o.hall_id=h.h_id where o.order_id=#{orderId}
+	</select>
+</mapper>

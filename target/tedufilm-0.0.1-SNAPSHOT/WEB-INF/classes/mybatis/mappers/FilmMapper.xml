@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.tarena.film.mapper.FilmMapper">
+	<select id="findFilmByFilmId" resultMap="filmRm">
+		SELECT *FROM
+		(SELECT type_name,type_id id FROM type_list) t
+			RIGHT JOIN
+		(SELECT * FROM film_list where film_id=#{filmId}) f
+			ON 
+		t.id=f.type_id
+	</select>
+	
+	<resultMap type="film" id="filmRm" autoMapping="true">
+			<id column="film_id" property="filmId"/>
+			<association property="filmType" javaType="filmType">
+				<id column="type_id" property="typeId"/>
+				<result column="type_name" property="typeName"/>
+			</association>
+	</resultMap>
+	
+	<select id="findOnlineFilm" resultType="onlineFilm">
+		SELECT * FROM
+		(SELECT * FROM play_list WHERE film_id=#{filmId}) p
+			LEFT JOIN
+		(SELECT hall_name,hall_id id FROM hall_list) h
+			ON 
+		p.hall_id=h.id
+			ORDER BY start_time
+	</select>
+	
+	<select id="findFilms" resultType="film">
+		select * from film_list where type_id=#{typeId}
+	</select>
+	
+	<select id="findAll" resultMap="RMfilm">
+		SELECT * FROM FILM_LIST f
+		INNER JOIN (SELECT TYPE_ID T_ID,TYPE_NAME FROM TYPE_LIST) t 
+		ON
+		t.T_ID=f.TYPE_ID
+	</select>
+	<resultMap type="Film" id="RMfilm" autoMapping="true">
+		<id column="film_id" property="filmId"/>
+		<association property="type" javaType="Type">
+		<id column="t_id" property="typeId"/>
+		<result column="type_name" property="typeName"/>
+		</association>
+	</resultMap>
+	<insert id="saveFilm">
+	INSERT INTO FILM_LIST VALUES(
+	null,
+	#{filmName},
+	#{type.typeId},
+	#{describes},
+	#{releaseDate},
+	#{state},
+	#{filmImage,jdbcType=VARCHAR},
+	#{duration},
+	#{price},
+	#{movieUrl,jdbcType=VARCHAR}
+	)
+	
+	</insert>
+	
+	<delete id="deleteFilm">
+		delete from film_list where film_id in(
+				<foreach collection="array" item="id" separator=",">
+					#{id}
+				</foreach>
+			)
+	</delete>
+	
+	<delete id="deleteFilmBeType">
+	delete from film_list where film_id=#{filmId}
+	</delete>
+	
+	<select id="findInterested" resultMap="RMfilm">
+	SELECT * FROM FILM_LIST f
+		INNER JOIN (SELECT TYPE_ID T_ID,TYPE_NAME FROM TYPE_LIST) t 
+		ON
+		t.T_ID=f.TYPE_ID limit #{start},#{end}
+	</select>
+	
+	<select id="findQueryFilm" resultMap="RMfilm">
+	SELECT * FROM FILM_LIST f
+		INNER JOIN (SELECT TYPE_ID T_ID,TYPE_NAME FROM TYPE_LIST) t 
+		ON
+		t.T_ID=f.TYPE_ID
+		<where>
+		  <if test="type.typeId != 0"> type_id=#{type.typeId} </if>
+		  <if test="filmName != null"> and film_name like CONCAT(CONCAT('%', #{filmName,jdbcType=VARCHAR}), '%') </if>
+		</where>
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+

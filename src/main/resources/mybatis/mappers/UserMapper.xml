@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.tarena.film.mapper.UserMapper">
+	<!--查询部门列表信息  -->
+	<insert id="save">
+		INSERT INTO 
+			user_list 
+		VALUES
+			(#{userId},#{username},#{password},#{isAdmin})
+	</insert>
+	
+	<select id="findAll" resultType="User">
+		select user_id,username from user_list
+	</select>
+	
+	<select id="findOne" resultType="User">
+		select * from user_list where user_id=#{userId}
+	</select>
+	
+	<update id="updateUser">
+		update user_list 
+		<set>
+			user_id=#{userId},
+			username=#{username},
+			password=#{password}
+			where user_id=#{userId}
+		</set>
+	</update>
+	
+	<delete id="deleteUser">
+		delete from user_list where user_id in (<foreach collection="array" item="id" separator=",">#{id}</foreach>)
+	</delete>
+	
+	<delete id="deleteU_O">
+		delete from order_list where user_id IN(
+		<foreach collection="array" item="id" separator=",">
+			#{id}
+		</foreach>		
+		)
+	</delete>
+	
+	<delete id="deleteU_E">
+		delete from evaluate_list where user_id IN(
+		<foreach collection="array" item="id" separator=",">
+			#{id}
+		</foreach>		
+		)
+	</delete>
+	
+</mapper>

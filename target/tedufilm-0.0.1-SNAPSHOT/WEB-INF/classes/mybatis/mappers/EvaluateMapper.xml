@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.tarena.film.mapper.EvaluateMapper">
+	<select id="findFilmByFid" resultType="Evaluate">
+		select * from evaluate_list where film_id=#{film.filmId} order by evaluate_id desc limit 0,100
+	</select>
+	<delete id="deleteFilm">
+	delete from evaluate_list where film_id=#{film.filmId}
+	</delete>
+	
+	<select id="findEvaByUid" resultType="Evaluate">
+		select * from evaluate_list where user_id=#{userId}
+	</select>
+	
+	<delete id="deleteEva">
+		delete from evaluate_list where user_id=#{userId}
+	</delete>
+	<insert id="saveEvaluate">
+		insert into evaluate_list values(
+			#{film.filmId},
+			#{user.userId},
+			#{evaluteId},
+			#{info},
+			#{score}
+		)
+	</insert>
+</mapper>

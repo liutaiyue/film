@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.tarena.film.mapper.PlayMapper">
+<!--根据电影找播映  -->
+	<select id="findAllByFid" resultMap="RMplay">
+		SELECT * FROM 
+(SELECT * FROM play_list p LEFT JOIN 
+(SELECT film_id f_id,film_name,duration,price FROM film_list) s ON p.film_id=s.f_id) s
+LEFT JOIN
+(SELECT play_id p_id,h_id,hall_name,hall_row,hall_col FROM play_list LEFT JOIN 
+   (select hall_id h_id,hall_name,hall_row,hall_col from hall_list) h 
+   ON play_list.hall_id=h.h_id) h
+ON s.play_id=h.p_id
+ WHERE s.FILM_ID=#{filmId}
+	</select>
+    <resultMap type="Play" id="RMplay" autoMapping="true">
+	<id column="play_id" property="playId"/>
+	<association property="film" javaType="Film">
+	<id column="film_id" property="filmId"/>
+	<result column="film_name" property="filmName"/>
+	<result column="duration" property="duration"/>
+	<result column="price" property="price"/>
+	</association>
+	<association property="hall" javaType="Hall">
+	<id column="hall_id" property="hallId"/>
+	<result column="hall_name" property="hallName"/>
+	<result column="hall_row" property="hallRow"/>
+	<result column="hall_col" property="hallCol"/>
+	</association>
+    </resultMap>
+    
+    <select id="findFilmByFid" resultType="Play" >
+    	select * from play_list where film_id=#{film.filmId}
+    </select>
+    
+    <delete id="deleteFilm">
+    delete from play_list where film_id=#{film.filmId}
+    </delete>
+    
+    
+    <insert id="savePlay">
+    	insert into play_list values(
+    	null,
+    	#{film.filmId},
+    	#{hall.hallId},
+    	#{startTime}
+    	)
+    </insert>
+    
+    <select id="findPlayByHid" resultType="Play">
+    	select * from play_list where hall_id=#{hallId}
+    </select>
+    
+    <delete id="deletePlayByHid">
+    	delete from play_list where hall_id=#{hallId}
+    </delete>
+    <delete id="deletePlay">
+    	delete from play_list where play_id=#{playId}
+    </delete>
+    
+    <select id="findByFilmIdAndHallId" resultType="play">
+		select * from play_list where film_id=#{filmId} and hall_id=#{hallId}
+	</select>
+    
+    <select id="findOne" resultMap="RMplay">
+    	SELECT * FROM 
+(SELECT * FROM play_list p LEFT JOIN 
+(SELECT film_id f_id,film_name,duration,price FROM film_list) s ON p.film_id=s.f_id) s
+LEFT JOIN
+(SELECT play_id p_id,h_id,hall_name,hall_row,hall_col FROM play_list LEFT JOIN 
+   (select hall_id h_id,hall_name,hall_row,hall_col from hall_list) h 
+   ON play_list.hall_id=h.h_id) h
+ON s.play_id=h.p_id
+where s.play_id=#{playId}
+    </select>
+    
+    <update id="updatePlay">
+    	update play_list set start_time=#{startTime},hall_id=#{hall.hallId} where play_id=#{playId}
+    </update>
+</mapper>

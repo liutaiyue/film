@@ -1,0 +1,841 @@
+body{
+	width: 1210px;
+    margin: 0 auto;
+   
+  
+}
+.clr{
+	clear:both;
+}
+/* 订票 */
+.booking{
+	position: relative;
+}
+.booking .register-first {
+	display:none;
+    position: absolute;
+    width: 390px;
+    height: 60px;
+    background: #d81658;
+    top: 150px;
+    left: 415px;
+    line-height: 60px;
+    padding-left: 30px;
+    color: #fff;
+}
+.booking .register-first span{
+	margin-right: 100px;
+}
+.booking .register-first .y{
+    margin-left: 15px;
+    text-decoration: none;
+    display: inline-block;
+    width: 60px;
+    color: #725;
+    height: 30px;
+    background: #fff;
+    line-height: 30px;
+    text-align: center;
+}
+.booking .register-first .y:hover{
+	color: #000;
+}
+.booking .info{
+	height: 30px;
+}
+
+.booking .info span{
+	display:inline-block;
+	line-height: 30px;
+	background: #725;
+	width:200px;
+	color:#fff;
+	text-align: center;
+	font-size: 18px;
+}
+.booking .chooseSeats{
+	width:100%;
+}
+.booking .chooseSeats .choose{
+	float:left;
+	background: #ccc;
+	width:60%;
+	height:400px;
+	text-align: center;
+}
+.booking .chooseSeats .choose .note{
+	border-bottom:2px solid #fff;
+	height: 40px;
+	text-align: center;
+}
+.booking .chooseSeats .choose .note span{
+	display: inline-block;
+	line-height: 40px;
+	margin-left: 2px;
+}
+.booking .chooseSeats .choose .note p{
+	background: #fff;
+	height: 30px;
+	line-height: 30px;
+}
+.can{
+	background: green;
+	display:inline-block;
+	width:20px;
+	height: 20px;
+}
+.used{
+	width:20px;
+	height: 20px;
+	display:inline-block;
+	background: #000;
+}
+.selected{
+	width:20px;
+	height: 20px;
+	display:inline-block;
+	background: #ff5;
+}
+.booking .chooseSeats .choose .seats{
+	border-top:5px solid #959cc1;
+	margin-top:70px;
+	text-align: center;
+	width:100%;
+}
+.booking .chooseSeats .choose .notice{
+	display: inline-block;
+	margin-top:50px;
+	height: 30px;
+	line-height: 30px;
+	font-style: oblique;
+	color: #fff;
+	background: #524040;
+	width:100%;
+}
+/* 描述及购票 */
+.booking .chooseSeats .descr{
+	height:400px;
+	float:left;
+	width:40%;
+	background: #e2e2e2;
+}
+.booking .chooseSeats .descr .base{
+	border-bottom: 4px solid #fff;
+	height: 150px;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+.booking .chooseSeats .descr .seat{
+	height: 120px;
+	border-bottom: 4px solid #fff;
+	padding-top: 20px;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+.booking .chooseSeats .descr .seat span{
+	display: block;
+	margin-top:15px;
+	width:100px;
+	border:2px solid #fff;
+	margin-left: 10px;
+	text-align: center;
+	line-height:25px;
+	height:25px;
+}
+.booking .chooseSeats .descr .saleout a{
+	display:inline-block;
+	background:#d81658;
+	text-align:center;
+	width:200px;
+	height: 50px;
+	color:#fff;
+	text-decoration: none;
+	font-size: 20px;
+    margin-left: 0;
+}
+.booking .chooseSeats .descr .saleout p{
+	line-height: 50px;
+    padding-left: 120px;
+}
+.booking .chooseSeats .descr .saleout p span{
+	color:red;
+}
+/* 版权区 */
+.footer{
+	margin:20px 0px;
+	text-align: center;
+    border: 5px solid #725;
+	height: 80px;
+}
+.footer p{
+	line-height: 20px;
+}
+/* logo区 */
+.head{
+	border-bottom: 5px solid #772255;
+	margin-bottom: 25px;
+}
+.head .personal a.head-toLogin,.head .personal a.head-toRegister {
+    float: right;
+    margin-top: 25px;
+    margin-right: 10px;
+    color: #222;
+    text-decoration: none;
+}
+.head .personal a:hover{
+	color: #f36;
+}
+.head span.charge {
+    display: none;
+}
+.head .user-name {
+    display: inline-block;
+    float: right;
+    margin: 26px;
+}
+.head .personal ul>b{
+    border: 15px solid transparent;
+    border-bottom-color: #884633;
+    position: relative;
+    left: 128px;
+    top: -26px;
+}
+.head .personal .user{
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    float: right;
+    margin-right: 20px;
+    margin-top: 8px;
+	border: 2px solid #ccc;
+}
+.head .personal .user:hover{
+	border: 2px solid #884633;
+}
+.head .personal #user-nav a:hover{
+	background: #975;
+}
+.head .personal #user-nav {
+	margin-top: 20px;
+  	position: absolute;
+    top: 53px;
+    right: 30px;
+    z-index: 999;
+    padding-left:0;
+    list-style: none;
+    background: #884633;
+    width:160px;
+    display:none;
+    height:168px;
+}
+.head .personal:hover #user-nav{
+	display:block;
+}
+.head .personal #user-nav li a {
+    text-decoration: none;
+    color: #fff;
+}
+.head .personal:hover #user-nav li a{
+    display: inline-block;
+    width: 160px;
+    height: 50px;  
+} 
+.head .personal #user-nav li{
+   background:#884633;
+   height: 50px;
+   width: 100%;
+   line-height: 50px;
+   text-align: center;
+   font-size: 16px;
+}
+.head .personal{
+	position:relative;
+}
+.head .logo-box {
+    float: left;
+    padding-top: 20px;
+    margin-right: 70px;
+    font-size: 32px;
+    color: #923c92;
+}
+.head .nav-box{
+	float:left;
+}
+.head a.nav-item {
+  	height: 70px;
+    line-height: 70px;
+    padding: 0 40px;
+    background-color: #066;
+    display: block;
+    text-align: center;
+    float: left;
+    margin: 0 20px;
+    font-size: 18px;
+    color: #fff;
+    text-decoration: none;
+}
+.head a.nav-item:hover{
+	background:#859;
+}
+/* 首页 */ 
+#bigpic{
+    padding: 0 240px;
+    background: url(../images/films/b2.jpg) no-repeat top left;
+    height: 439px;
+}
+#bigpic #box{
+    width: 780px;
+}
+#bigpic img{
+    width: 780px;
+    opacity: 0.5;
+    box-shadow: 0px 0px 100px #F40;
+}
+#bigpic img:hover{
+  	cursor:pointer;
+}
+.sorts{
+	min-height: 100px;
+    margin: 20px 0;
+}
+.sorts .pattern{
+	display: inline-block;
+	margin:20px 100px 0px 0px;
+    border-left:8px solid #725;
+    text-align: center;
+    font-size: 22px;
+    padding-top:5px;
+    padding-left:20px;
+}
+.sorts a{
+	display: inline-block;
+	float: right;
+    text-decoration: none;
+    font-size: 22px;
+    color: #000;
+    margin-top: 20px;
+    padding-top:5px;
+}
+.sorts .films ul{
+    margin-top:0px;
+    padding-left:0px;
+}
+.sorts .films li{
+    float: left;
+    height: 360px;
+    width: 18.3999999%;
+    list-style-type: none;
+    margin-left: 2%;
+    overflow: hidden;
+}
+.sorts .films li:hover {
+    position: relative;
+    top: -3px;
+}
+.sorts .films li:nth-of-type(1){
+	margin-left:0;
+}
+.sorts .films li img{
+    width: 222.63px;;
+	height:295px;
+}
+.sorts .films li p{
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    margin: 0;
+    background: #fff;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.top{
+    position: fixed;
+    right: 0;
+    bottom: 60px;
+	display:inline-block;
+	width:65px;
+	height:65px;
+	line-height:65px;
+	text-align:center;
+	text-decoration: none;
+	background:#324;
+	font-weight: bold;
+    color: #fff;
+    font-size: 22px;
+    font-family: courier;
+    transition:background 1s;
+}
+.top:hover{
+	background: #524b58;
+}
+/* 查询页 */
+.query{
+	margin:20px 0;
+}
+.query_film span{
+    display: block;
+    margin: 20px 0;
+}
+.query_select .filmName{
+    width: 150px;
+    height: 25px;
+}
+.query .go{
+	width:150px;
+	height:25px;
+	background: #ab5a5a;
+	border: 0;
+	font-size:20px;
+	color:#fff;
+	transition:background 0.5s;
+}
+.query .go:hover{
+	cursor:pointer;
+	background: #5a5;
+}
+.query_select {
+	width:100px;
+	height:25px;
+}
+/* 分开查询电影和自动加载电影 */
+.split{
+	border:5px solid #400080;
+	height: 5px;
+	background: #400080;
+}
+/* 查询页初始加载影片 */
+.show_film ul{
+	margin:0px;
+    padding:0px;
+}
+.show_film ul li{
+    float: left;
+    height: 360px;
+    width: 18.3999999%;
+    list-style-type: none;
+    overflow: hidden;
+}
+.show_film ul li:hover {
+    position: relative;
+    top: -3px;
+}
+.show_film ul li img{
+    width: 222.63px;;
+	height:295px;
+}
+.show_film ul li p{
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    margin: 0;
+    background: #fff;
+    width: 222.63px;;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.show_film{
+    width: 1234px;
+}
+
+.show_film ul li{
+	width:20%;
+	box-sizing:border-box;
+}
+.show_film #back {
+	text-decoration: none;
+	display:block;
+	height:40px;
+	line-height:40px;
+    font-size: 22px;
+    color: #000;
+    margin: 20px;
+}
+/* 电影详细 */
+.main>div{
+	float:left;
+}
+.main .pic img{
+	width:90%;
+}
+.main .pic{
+	width:40%;
+}
+.main .descript{
+    line-height: 30px;
+	width:60%;
+}
+.main .descript .film-name h2{
+	margin: 0px 0px 10px 0px;
+}
+.main .films-list{
+	margin:0;
+}
+.main .films-list .lis{
+	width:100%;
+	border-top:2px solid #ab5a5a;
+	border-collapse: collapse;
+}
+
+.main .films-list .lis tr{
+	border-bottom:2px solid #ab5a5a;
+}
+.main .films-list .lis .pre{
+	font-size:14px;
+}
+.main .films-list .lis td{
+	border-bottom:2px solid #999;
+    border-right: 5px solid #cccca6;
+    width: 20%;
+    height: 50px;
+    text-align: center;
+    font-size: 14px;
+}
+.main .films-list .lis a{
+    line-height: 36px;
+	display: inline-block;
+	width:100%;
+	height: 60%;
+	background: #fe8a4b;
+	text-decoration: none;
+	color:#5c0724;
+	margin: 0 auto;
+}
+.main .films-list .lis a:hover{
+	font-weight: bold;
+}
+/* 修改密码页 */
+.alter-base{
+	width:100%;
+	background: url(../images/films/querybg.jpg) no-repeat center;
+	padding:30px 0;
+}
+#register-base{
+	width:100%;
+	background: url(../images/films/b4.jpg) no-repeat center;
+	padding:30px 0;
+}
+.alter-box {
+    width: 600px;
+    height: 390px;
+    margin: 10px auto;
+    background: rgba(241, 216, 216, 0.82);
+    box-shadow: 0px 0px 20px #eee;
+}
+.alter-box .user-name #tolog a{
+	color:#252;
+}
+.alter-box .title{
+    background: rgba(95, 74, 80, 0.8);
+	height: 50px;
+	line-height: 50px;
+    font-size: 22px;
+    font-weight: bold;
+    color:#fff;
+    padding-left:20px;
+    font-family: courier;
+}
+.alter-box .title .cancle {
+    float: right;
+    margin-right: 5px;
+    margin-top: 15px;
+    display: block;
+    border:2px solid #5f4a50;
+}
+.alter-box .title .cancle:hover{
+	border:2px solid #916c6c;
+}
+.alter-box form{
+	padding-left:20px;
+}
+.alter-box form tr {
+    height: 50px;
+    line-height: 50px;
+    font-size: 21px;
+    font-family: courier;
+    color: #a71841;
+    margin-top:10px;
+    text-align: right;
+}
+.alter-box form tr input{
+    height: 25px;
+    width: 215px;
+    padding:0 10px;
+}
+.alter-box form .name{
+	width:120px;
+}
+.alter-box form .note{
+	text-align: left;
+	font-size: 16px;
+	padding-left: 20px;
+}
+.alter-box form img{
+    border: 1px solid #2a163f;
+    width: 80px;
+    height: 32px;
+    margin-left: 15px;
+    float: right;
+}
+.alter-box form .code {
+    height: 32px;
+    margin-left: 120px;
+    width: 115px;
+    float: left;
+    padding: 0 10px;
+}
+.alter-box form div {
+    height: 32px;
+    width: 360px;
+    margin-top: 10px;
+}
+.alter-box .user-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #a71841;
+    padding-left: 20px;
+    font-family: courier;
+    height: 40px;
+    line-height: 50px;
+}
+.alter-box .user-name span{
+	font-family:inherit;
+	font-size:22px;
+	color:#33516d;
+}
+.alter-box form p a{
+	text-decoration:none;
+	display:inline-block;
+	width:250px;
+	height:50px;
+    background: rgba(85, 68, 51, 0.58);
+	margin-left:120px;
+	text-align: center;
+	font-size: 22px;
+    font-family: courier;
+    font-weight: bold;
+    height: 50px;
+	line-height: 50px;
+    color: #fff;
+    transition:background 0.3s;
+}
+.alter-box form p a:hover{
+	background: #956331;
+}
+.alter-box form p .message{
+	color: #930058;
+	margin-left: 10px;
+}
+/* 我的电影票 */
+.myTikets{
+	background: #ccc;
+}
+.myTikets div.contain {
+	min-height: 400px;
+    width: 1140px;	
+}
+.myTikets div.contain h2{
+    margin: 40px;
+}
+.myTikets div {
+    float: left;
+    height: 320px;
+    list-style-type: none;
+    overflow: hidden;
+    margin:20px;
+    margin-left: 30px;
+}
+.myTikets .allMsg{
+	width:264px;
+}
+.myTikets>div{
+	 border:1px solid #8e4803;
+     background: #fff;
+}
+.myTikets .filmImg img {
+    width: 187.63px;
+    height: 240px;
+}
+.myTikets .allMsg span{
+	display:block;
+	margin-top: 10px;
+}
+.myTikets .allMsg a{
+	display:inline-block;
+	text-decoration:none;
+	width:120px;
+	height: 30px;
+	background:#483737;
+	color:#fff;
+	line-height: 30px;
+	text-align:center;
+}
+.myTikets .allMsg a:hover{
+	font-weight: bold;
+}
+/* 登录页 */
+.login{
+	width:600px;
+	height:390px;
+	background:#ccc;
+	margin:100px auto;
+	text-align: center;
+    margin-left: 135px;
+    border-radius;
+}
+.login input {
+    height: 40px;
+    width: 300px;
+    line-height: 60px;
+    font-size: 18px;
+    padding: 0 17px;
+    margin-top: 50px;
+    border-radius:8px;
+}
+.login p span{
+	font-weight: bold;
+	color:#546;
+    font-size: 22px;
+	font-family:courier;
+}
+.login .message{
+	color: red;
+	font-size: 16px;
+	line-height:60px;
+}
+.login p{
+	margin:0;
+}
+.login span{
+	display:inline-block;
+    height: 60px;
+	line-height:60px;
+    font-size: 16px;
+	width:80px;
+	text-align:center;
+	color:#f00;
+}
+.login a {
+    display: inline-block;
+    width: 300px;
+    height: 50px;
+    color: #fff;
+    font-size: 16px;
+    line-height: 70px;
+    text-align: center;
+    text-decoration: none;
+    background: #435;
+    margin-top: 30px;
+    transition:background 0.5s;
+    font-size: 22px;
+	font-family:courier;
+	border-radius:15px;
+	padding-bottom: 5px;
+}
+.login a:hover{
+	background: #ed8488;
+}
+.login-body{
+	background-image: url(../images/films/bgb.jpg);
+  	background-size:100%;
+        background-repeat:no-repeat;
+}
+.bg{
+	width:600px;
+	height:390px;
+	background:#8e6a57;
+	margin:100px auto;
+	position: relative;
+	z-index:0;
+}
+.bg, .login {
+    float: left;
+    opacity: 0.8;
+    box-shadow: 0px 0px 9px #eee;
+    border-radius: 7px;
+}
+/* 登录页动画区 */
+.login-body{
+	margin:0;
+	margin-left:130px;
+}
+#stage{
+	width:402px;
+	/*border:1px solid #333;*/
+	perspective:1000px;
+	display: inline-block;
+    float: left;
+}
+#parent img{
+	border-radius:20px;
+	width:150px;
+	height:250px;
+    opacity: 0.95;
+}
+#parent{
+	width:400px;height:400px;
+	position:relative;
+	transform-style:preserve-3d;
+	animation:scroll 15s linear infinite;
+	display: inline-block;
+    float: left;
+}
+#parent:hover{
+	animation-play-state:paused;
+}
+#parent div{
+	width:100px;
+	height:100px;
+	position:absolute;
+	left:150px;
+	top:150px;
+}
+#parent div:nth-child(1){
+	transform:rotatey(0deg) translatez(200px);
+}
+#parent div:nth-child(2){
+	transform:rotatey(60deg) translatez(200px);
+}
+#parent div:nth-child(3){
+	transform:rotatey(120deg) translatez(200px);
+}
+#parent div:nth-child(4){
+	transform:rotatey(180deg) translatez(200px);
+}
+#parent div:nth-child(5){
+	transform:rotatey(240deg) translatez(200px);
+}
+#parent div:nth-child(6){
+	transform:rotatey(300deg) translatez(200px);
+}
+
+/*声明动画*/
+@keyframes scroll{
+	0%{
+		transform:rotatex(-5deg) rotatey(0deg);
+	}
+
+	100%{
+		transform:rotatex(-5deg) rotatey(360deg);
+	}
+}
+/* 购买成功 */
+#success{
+	position:absolute;
+	left:300px;
+	top:300px;
+	z-index:999;
+}
+#secondes{
+	display: inline-block;
+    height: 50px;
+    width: 40px;
+    background: #f8f8f8;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid #800af6;
+}
+
